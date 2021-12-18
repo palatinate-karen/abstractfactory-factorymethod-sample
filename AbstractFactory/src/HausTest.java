@@ -1,27 +1,20 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import produkt.dach.Giebeldach;
+import produkt.rohbau.Holzbau;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Testet, dass bei einem Einfamilienhaus auch wirklich ein Giebeldach und Holzbau verwendet wurden.
+ */
 class HausTest {
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
-    Haus haus;
-
-    @BeforeEach
-    public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
     @Test
     void ichBaueEinEinfamilienhaus() {
-        String expectedOutput = "Holz Giebeldach";
+        Haus haus = new Haus("Einfamilienhaus");
 
-        haus = new Haus();
+        haus.buildHaus();
 
-        assertEquals(expectedOutput, outputStreamCaptor.toString());
+        assertEquals(Giebeldach.class, haus.getDach().getClass());
+        assertEquals(Holzbau.class, haus.getRohbau().getClass());
     }
 }
