@@ -1,11 +1,17 @@
 import cocktail.Cocktail;
 
+/**
+ * Creator
+ */
 public abstract class Bar {
-    public Cocktail cocktailVerkaufen() {
-        String cocktailName = bestellen();
-        return zubereiten(cocktailName);
+    /**
+     * Factory Method
+     */
+    public abstract Cocktail bestellen(String name);
+
+    public void bestaetigen(String name) {
+        System.out.println("Es wurde " + name + " bestellt.");
+        System.out.println("Cocktail wird zubereitet.");
     }
-    public abstract String bestellen();
-    // Factory Method
-    public abstract Cocktail zubereiten(String name);
+
 }

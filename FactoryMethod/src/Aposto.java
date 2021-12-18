@@ -2,15 +2,17 @@ import cocktail.Cocktail;
 import cocktail.LongIslandIcedTea;
 import cocktail.Mojito;
 
+/**
+ * ConcreteCreator
+ */
 public class Aposto extends Bar {
+    /**
+     * Factory Method
+     */
     @Override
-    public String bestellen() {
-        return "LongIslandIcedTea";
-    }
+    public Cocktail bestellen(String name) {
+        bestaetigen(name);
 
-    // Factory Method
-    @Override
-    public Cocktail zubereiten(String name) {
         return switch (name.toLowerCase()) {
             case "longislandicedtea" -> new LongIslandIcedTea();
             case "mojito" -> new Mojito();
